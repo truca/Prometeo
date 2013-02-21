@@ -94,6 +94,7 @@ void MainWindow::newParamValue(enum Tipo_Param tipo, float value) {
         break;
       case TIPO_PARAM_BATERIA:
         //ui->progressBar_bateria->setValue((int)value);
+        ui->webView->setBatteryValue();
         break;
       case TIPO_PARAM_ALTURA:
         {

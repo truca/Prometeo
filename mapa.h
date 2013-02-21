@@ -12,6 +12,7 @@ class Mapa : public QWebView
 public:
     explicit Mapa(QWidget *parent = 0);
     JSComunicador *comunicadorjs;
+    void setBatteryValue();
     
 signals:
     /*signal emited when a waypoint is seted*/

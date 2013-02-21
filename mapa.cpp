@@ -37,6 +37,10 @@ void Mapa::addPosition(double lat, double lng){
     page()->mainFrame()->evaluateJavaScript("addPosition("+Lat+","+Lng+");");
 }
 
+void Mapa::setBatteryValue(value){
+    page()->mainFrame()->evaluateJavaScript("setBatteryValue("+value+")");
+}
+
 void Mapa::addJSObject() {
     page()->mainFrame()->addToJavaScriptWindowObject("comunicadorjs", comunicadorjs);
 }
