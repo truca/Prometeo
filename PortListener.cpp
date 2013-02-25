@@ -411,6 +411,18 @@ void PortListener::SendDespegar() {
     qWarning("ENVIADO: MAV_CMD_NAV_TAKEOFF");
 }
 
+void PortListener::SendAltura(float altura){
+    this->SendParam(TIPO_PARAM_ALTURA_REF, altura);
+}
+
+void PortListener::SendAlturaYawPitch(float altura, float yaw, float pitch){
+    this->SendParam(TIPO_PARAM_);
+}
+
+void PortListener::SendYawPitch(float yaw, float pitch){
+
+}
+
 void PortListener::SendAterrizar() {
     float param[7] = {0,0,0,0,0,0,0};
     SendMavCompIDAll(MAV_CMD_NAV_LAND, param, 1);

@@ -57,12 +57,19 @@ MainWindow::MainWindow(QWidget *parent) :
     timerSetYawToHome_valueChanged.setSingleShot(true);
     connect(&timerSetYawToHome_valueChanged, SIGNAL(timeout()), this, SLOT(dialYaw_valueChanged_timeout()));
 
+    connect(ui->webView->comunicadorjs, SIGNAL(Motores()), rcv, SLOT(SendArmarDesarmarMotores()));
     connect(ui->webView->comunicadorjs, SIGNAL(Despegar()),  rcv, SLOT(SendDespegar()));
     connect(ui->webView->comunicadorjs, SIGNAL(Aterrizar()), rcv, SLOT(SendAterrizar()));
     connect(ui->webView->comunicadorjs, SIGNAL(GoHome()),    rcv, SLOT(SendGotoHome()));
+
+    connect(ui->webView->comunicadorjs, SIGNAL(SendAltura(float)), rcv, SLOT(SendAltura(float)));
+    connect(ui->webView->comunicadorjs, SIGNAL(SendYawPitch(float, float)), rcv, SLOT(SendYawPitch(float, float)));
+    connect(ui->webView->comunicadorjs, SIGNAL(SendAlturaYawPitch(float, float, float)), rcv, SLOT(SendAlturaYawPitch(float, float, float)));
+
     connect(ui->webView->comunicadorjs, SIGNAL(sendPoints(int,int,int)), rcv, SLOT(sendPoints(int,int,int)));
     connect(ui->webView->comunicadorjs, SIGNAL(sendPoint(float,float)), rcv, SLOT(sendPoint(float,float)));
     connect(ui->webView->comunicadorjs, SIGNAL(exit()), this, SLOT(exit()));
+
     connect(rcv,SIGNAL(requestMissionReceived()), ui->webView, SLOT(requestMissionReceived()));
 
     connect(&timerSetAltura, SIGNAL(timeout()), this, SLOT(timerSetAltura_timeout()));
@@ -242,6 +249,8 @@ void MainWindow::on_verticalSlider_altura_sliderPressed()
     ui->doubleSpinBox_altura->setValue( ui->label_altura->text().toFloat() );
     timerSetAltura.start(100);
 }
+
+
 
 void MainWindow::timerSetAltura_timeout() {
      ui->doubleSpinBox_altura->setValue( ui->doubleSpinBox_altura->value() + (float)ui->verticalSlider_altura->value() / 100.0 );

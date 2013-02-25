@@ -17,6 +17,11 @@ signals:
     void Despegar();
     void Aterrizar();
     void GoHome();
+    void Motores();
+
+    void SendAltura(float altura);
+    void SendYawVelocidad(float yaw, float velocidad);
+    void SendAlturaYawVelocidad(float altura, float yaw, float velocidad);
 
 public slots:
     void requestMissionReceived();

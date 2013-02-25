@@ -17,7 +17,7 @@ Mapa::Mapa(QWidget *parent) :
 
 //    load(QUrl("http://www.puertosur.cl/images/Mapa2.html"));
 //    load(QUrl("http://www.xaerials.lin.cl/Mapa.html"));
-    load(QUrl("http://puertosur.cl/images/gui/Mapa/Mapa.html"));
+    load(QUrl("http://www.tractorverde.cl/XAerials/Mapa/Mapa.html"));
 //    load(QUrl("http://puertosur.cl/images/gui/Manual/ControlManual.html"));
 }
 

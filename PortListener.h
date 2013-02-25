@@ -117,6 +117,10 @@ public slots:
     void SendRequestParam(enum Tipo_Param tipo);
     void sendPoints(int mode, int type, int count);
     void sendPoint(float lat, float lng);
+
+    void SendAlturaYawPitch(float altura, float yaw, float pitch);
+    void SendYawPitch(float yaw, float pitch);
+    void SendAltura(float altura);
 };
 
 
